@@ -1,0 +1,33 @@
+﻿
+#div-claimCreate .form-group{
+    margin-bottom: 2rem;
+}
+
+select.form-control{
+    width: 80%;
+}
+
+.div-disputesContainer{
+    margin-top: 1.3rem;
+}
+
+.div-disputeEntry{
+    margin-top: 1rem;
+}
+
+.spn-cbx {
+    margin-right: 12px;
+}
+
+.cbx-buro, .cbx-account {
+    display: inline-block;
+    width: 10%;
+    height: 1.3em;
+    vertical-align: middle;
+}
+
+#div-claimCreate a.btn-dispute {
+    color: white;
+}
+
+

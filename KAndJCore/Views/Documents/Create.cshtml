@@ -1,0 +1,73 @@
+﻿@model KAndJCore.Models.Document
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Document</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Client</label>
+                <br />
+                <label class="control-label">@ViewBag.Client.FullName</label>
+                <input asp-for="ClientId" class="form-control" value="@ViewBag.Client.Id" type="hidden" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DocumentTypeId" class="control-label"></label>
+                <select asp-for="DocumentTypeId" class="form-control" asp-items="ViewBag.DocumentTypeId"></select>
+            </div>
+            <div class="form-group" style="width:200%">
+                <input asp-for="FileFullName" type="hidden" class="form-control" />
+                <div class="mb-3 dm-uploader" id="drag-and-drop-zone">
+                    <div class="form-row">
+                        <div class="col-md-10 col-sm-12">
+                            <div class="from-group mb-2">
+                                <label>Image Uploader</label>
+                                <input type="text" class="form-control" aria-describedby="fileHelp" placeholder="No document uploaded..." readonly="readonly">
+
+                                <div class="progress mb-2 d-none">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0">
+                                        0%
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div role="button" class="btn btn-primary mr-2">
+                                    <i class="fa fa-folder-o fa-fw"></i> Browse Files
+                                    <input type="file" title="Click to add Files">
+                                </div>
+                                <small class="status text-muted">Select a file or drag it over this area..</small>
+                            </div>
+                        </div>
+                        <div class="col-md-2  d-md-block  d-sm-none">
+                            <img src="https://danielmg.org/assets/image/noimage.jpg?v=v10" alt="..." class="img-thumbnail">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+
+    </div>
+</div>
+<div>
+    <a asp-action="Index" asp-route-id="@ViewBag.Client.Id">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="@Url.Content("~/js/document-create.js")"></script>
+}

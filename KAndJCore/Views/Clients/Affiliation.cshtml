@@ -1,0 +1,356 @@
+﻿@model KAndJCore.Models.Client
+
+@{Layout = null;}
+
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+    <style type="text/css">
+        
+        .div-document{
+            font-family: Verdana;
+            font-size: 16px;
+        }
+
+        .div-page{
+            height: 1745px;
+            position: relative;
+        }
+
+        .div-header {
+            width: 100%;
+            text-align: center;
+        }
+
+        .div-block {
+            margin-top: 25px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .div-block .span-title{
+            font-weight:bold;
+        }
+
+        .div-block p {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .div-initials{
+            position:absolute;
+            bottom:30px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .spn-initials, .bold {
+            font-weight: bold;
+        }
+
+        .spn-disclaimer {
+            margin-left: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="div-document">
+        <div class="div-page">
+            <div class="div-header">
+                <img src="~/content/aff_header.png" />
+            </div>
+            <div class="div-header">
+                <img src="~/content/aff_table.png" />
+            </div>
+            <div style=" position: absolute; left: 30px; top: 175px"><span>@Model.Created.ToString("MM/dd/yyyy")</span></div>
+            <div style="position:absolute;left:335px;top:175px"><span>@Model.DOB.ToString("MM/dd/yyyy")</span></div>
+            <div style="position:absolute;left:600px;top:175px"><span></span></div>
+            <div style="position:absolute;left:820px;top:175px"><span>@Model.SSN</span></div>
+            <div style="position:absolute;left:30px;top:235px"><span>@Model.Name</span></div>
+            <div style="position:absolute;left:335px;top:235px"><span>@Model.MiddleName</span></div>
+            <div style="position:absolute;left:610px;top:235px"><span>@Model.LastName</span></div>
+            <div style="position:absolute;left:30px;top:315px"><span>@Model.Address</span></div>
+            <div style="position:absolute;left:610px;top:315px"><span>@Model.PreviousAddress</span></div>
+            <div style="position:absolute;left:30px;top:380px"><span>@Model.CellPhone</span></div>
+            <div style="position:absolute;left:335px;top:380px"><span>@Model.HomePhone</span></div>
+            <div style="position:absolute;left:610px;top:380px"><span>@Model.Email</span></div>
+            <div style="position:absolute;left:30px;top:435px"><span>@Model.OtherPhone</span></div>
+            <div style="position:absolute;left:335px;top:435px"><span>@Model.WorkPhone</span></div>
+            <div style="position:absolute;left:610px;top:435px"><span>@Model.Fax</span></div>
+            <div style="position:absolute;left:820px;top:435px"><span>@Model.WorkEmail</span></div>
+            <div style="position:absolute;left:885px;top:525px"><span>______00</span></div>
+            <div style="position:absolute;left:615px;top:770px"><span>K&J CREDIT REPAIR</span></div>
+            <div style="position:absolute;left:310px;top:823px"><span>K&J</span></div>
+            <div style="position:absolute;left:110px;top:850px"><span>creditrepairskj@gmail.com</span></div>
+            <div class="div-block">
+                <p>
+                    This agreement entered into between the undersigned (Recipient / You) and K & J Credit Repair. In order to take advantage of the benefits provided by K & J Credit Repair the undersigned shall become an Affiliate of K & J Credit Repair buying an Affiliation with K & J Credit Repair.
+                    The affiliation services include unlimited credit bureau deputes with no monthly fee.
+                </p>
+            </div>
+            <div class="div-block">
+                <span class="span-title">Step I. Initial Setup for Affiliation.</span>
+                <p>
+                    I understand that K & J Credit Repair will be performing the following services (Affiliation Setup) for a fee of $ _______ (nonrefundable after 5 days from the date the contract is signed). Up to 1 hour of credit consultation between Client and K & J Credit Repair,
+                    enrollment processing, originated and built file for Client, documents preparation for mailing process affiliation including data input in oursystem, verification process. In accordance with federal regulation, K & J Credit Repair charges for services only after they have been
+                    completed. Within the first five days of your sign up, we will perform the work necessary to get your case setup and ready for your first round of disputes. At this point you are charged for the affiliation setup fee to cover the work performed in that initial period. I agree K &
+                    J Credit Repair automatically charges my credit card or checking account on file after the initial setup for my affiliation has been performed. Any payment for the Affiliation, full or partial, will remain in our escrow account for 5 days becoming nonrefundable after the
+                    5 days cancelation period.
+                </p>
+            </div>
+            <div class="div-block">
+                <span class="span-title">Step II. Disputes.</span>
+                <p>
+                    I understand the credit report repair services for K & J Credit Repair Affiliates has an additional fee of $20.00 per every item updated, corrected or deleted in each credit report, including but not limited to late payments, injuries, fraud alerts, collections, repossessions,
+                    foreclosures, judgements, bankruptcies, etc. This fee is only charged after the item(s) disputed has been updated, corrected or deleted from the affiliate credit reports. The market regular price is $49.95 per item updated, corrected or deleted plus other fees. However, as a
+                    K & J Credit Repair Affiliate you only pay $20.00 per item updated, corrected or deleted. Past Due, I understand that if the total payment for services rendered within 15 days, my file status may become inactive until my complete payment is received by K & J Credit Repair.
+                    If you choose to make regular payments to complete your affiliation payment, you agree K & J Credit Repair to charge your credit card or checking account on the date you provide. K & J Credit Repair does not charge you in advance for any credit repair service. K & J
+                    Credit Repair charges you only after the initial setup for the affiliation have been performed and for each item updated, corrected or deleted when the item disputed be updated, corrected or deleted after each dispute we had to submit. K & J Credit Repair intends to
+                    help automates the time-consuming process of obtaining your credit reports, correcting credits in your credit reports, communicating with credit bureaus, creditors and collection agencies, negotiating with creditors and contesting terms within your credit reports. K & J
+                    Credit Repair offers credit information, not legal advice or legal services before the court or other legal institutions. We make every effort to ensure the accuracy of the information and to clearly explain your options. However, we do not provide legal advice or representation
+                    before the court or other legal institution. (i.e. The application of the law to your individual circumstances). For legal advice or representations, please consult an attorney.
+                </p>
+            </div>
+            <div class="div-initials">
+                <span class="spn-initials">Initials:_____________</span> 
+                <span class="spn-disclaimer">“A digital copy of this agreement shall be considered an original”</span>
+            </div>
+        </div>
+
+        <div class="div-page">
+            <div class="div-header">
+                <img src="~/content/aff_header.png" />
+            </div>
+            <div class="div-block">
+                <span class="span-title">In order to facilitate the credit restoration process, the affiliate agrees to the following:</span>
+                <p>
+                    • To forward to K & J Credit Repair all correspondence received from credit bureaus or creditors (keep a copy for your records).
+                </p>
+                <p>
+                    • Not to apply for any type of credit during the period of the agreement without a confirmation 3and approval of K & J Credit Repair if
+                    failure to do this may cause serious delays.
+                </p>
+                <p>
+                    • K & J Credit Repair affiliate realizes that the results obtained by K & J Credit Repair on behalf of K & J Credit Repair’s Affiliate are
+                    subject of several factors, including Affiliate’s creditors reporting practices, and the credit bureau’s ability to validate challenged entries
+                    provided to them by K & J Credit Repair on behalf of affiliate.
+                </p>
+                <p>
+                    • Affiliate understands that if they incur in any negative credit during the restauration process, this will minimize or prevent an increase
+                    in their credit score. This service does not relieve affiliate of their obligation to pay their bills.
+                </p>
+                <p>
+                    • Affiliate to call “Opt Out” service at 1-888-567-8688 to stop and prevent credit injuries and solicitations without the affiliate’s
+                    permission for at least a minimum period of one year. (Failure to do this may cause serious delays in the credit restoration process).
+                </p>
+                <p>
+                    • Affiliate to contact directly Equifax. Transunion and Experian to freeze his/her credit file if affiliate is a victim of identity thief.
+                </p>
+                <p>
+                    • Affiliate to provide a good quality copy of driver’s license or State ID.
+                </p>
+                <p>
+                    • Affiliate to provide a good quality copy of Social Security Card. If Social Security card is not available, include another form of
+                    identification with the Social Security Number shown.
+                </p>
+                <p>
+                    • Affiliate to provide a recent bill showing name and address. Affiliate to revise and initial all inaccurate, incomplete, unverifiable,
+                    duplicate, misleading, identity theft or outdated information in the three Credit Reports (Experian, Equifax and Transunion) and forward
+                    to our office the three initialed Credit Reports.
+                </p>
+                <p>
+                    • Affiliate agrees to notify in writing to K & J Credit Repair immediately if there are any negative items on affiliate’s reports which
+                    affiliates believe are not misleading, inaccurate, outdated or unverifiable due to that K & J Credit Repair may not prepare or submit
+                    investigation request for those items, or due to K & J Credit Repair may rescind any investigation request already sent.
+                </p>
+            </div>
+            <div class="div-block">
+                <span class="span-title">On its part, K & J Credit Repair agrees:</span>
+                <p>
+                    • If requested, K & J Credit Repair will obtain your credit reports from the three mayor credit reporting agencies (EQUIFAX,
+                    TRANSUNION AND EXPERIAN).
+                </p>
+                <p>
+                    • To evaluate K & J Credit Repair’s Affiliate current credit reports as issued by Equifax, Transunion and Experian Credit reporting
+                    agencies. To take, with cooperation with K & J Credit Repair’ s Affiliate the steps required to remove any inaccurate, incomplete,
+                    unverifiable, misleading or outdated information contained in the affiliate’s credit reports that has been placed by the credit reporting
+                    agencies.
+                </p>
+                <p>
+                    • To contact creditors to dispute any inaccurate, incomplete, unverifiable, misleading or outdated information contained in the affiliate’s
+                    credit reports.
+                </p>
+                <p>
+                    • To prepare and submit all required correspondence in dispute of above negative information in affiliate’s credit reports
+                </p>
+                <p>
+                    • To add a written statement of up to 100 words to affiliate’s credit file for any information still in dispute after K & J Credit Repair has
+                    exhausted all other legal avenues to remove or amend the negative information remaining in the affiliate’s credit file.
+                </p>
+                <p>
+                    Each case varies, and the credit bureaus response to each dispute varies, therefore it would be improper for us to say how long any
+                    individual case would require if credit reports are received promptly, you should see results within the first 30-90 days. After that,
+                    progress should be steady. The spread of your progress will depend on your participation, the nature of your case and the level of credit
+                    bureau cooperative. Remember, sending your credit reports promptly to our office each and every time while we are handing your case
+                    is a necessary step in the process of restoring your good credit.
+                </p>
+            </div>
+            <div class="div-block">
+                <span class="span-title">Limited Authorization</span>
+                <p>
+                    K & J Credit Repair is granted POWER OF ATTORNEY by Customer _____________________________________.
+                </p>
+                <p>
+                    Be it known that I the undersigned, am the individual/authorized officer of the business /personal entity listed below and as such do
+                    hereby grant a Limited Power of Attorney to K & J Credit Repair, and any and all persons in their employ K & J Credit Repair shall have
+                    the necessary power and legal authority to undertake and perform the following acts on my behalf. I hereby give permission to K & J
+                    Credit Repair to analyze and review any financial documentation related to my credit report and to sign my name on all letters written on
+                    my behalf. K & J Credit Repair will act as a special agent on my behalf for the only purpose of communicating with credit reporting
+                    agencies and to inquire, solicit, investigate, analyze, review, verify, challenge, and dispute any account information held by my creditors,
+                    consumer credit reporting agencies and the three Credit Bureaus (Experian, Equifax, and Transunion).
+                </p>
+                <p>
+                    You authorize K & J Credit Repair to disclose all information in your file including but not limited to your 3 credit reports and the
+                    correspondence with the credit bureaus, if this is required or requested by any attorney, court or a local state or federal authority, or if
+                    your case is related to a legal process inappropriate comments or defamatory actions against K & J Credit Repair.
+                </p>
+            </div>
+            <div class="div-block">
+                <span class="span-title">I HEREBY ACKNOWLEDGE THAT I HAVE READ AND UNDERSTAND THE FOLLOWING DISCLOSURES.</span>
+                <p>
+                    1. I understand that I have the right to obtain a copy and review my credit file maintained by any consumer may be charged by $8.00 by
+                    each reporting agency to obtain my consumer reporting agency file.
+                </p>
+                <p>
+                    2. I understand that I may review my consumer credit reporting agency file at no charge if I request a copy of my file from consumer
+                    reporting agency within 30 days after I have received notice that I have been denied credit.
+                </p>
+                <p>
+                    3. I understand that I have the right to dispute directly with a consumer reporting agency the completeness or accuracy of any item
+                    contained in my credit file maintained by any consumer reporting agency.
+                </p>
+            </div>
+            <div class="div-initials">
+                <span class="spn-initials">Initials:_____________</span>
+                <span class="spn-disclaimer">“A digital copy of this agreement shall be considered an original”</span>
+            </div>
+        </div>
+
+        <div class="div-page">
+            <div class="div-header">
+                <img src="~/content/aff_header.png" />
+            </div>
+            <div class="div-block">
+                <p>
+                    K & J Credit Repair expressly disclaims all warranties of any kind, whether express or implied, including, but not limited to the implied
+                    warranties of merchantability, fitness for a particular purpose and non-infringement. K & J Credit Repair makes no warranty that its
+                    service(s) will meet your requirements, or that the service(s) will be uninterrupted, timely, secure, or error free, or that defects will be
+                    corrected K & J Credit Repair do not warrant, not make any representations regarding the use, or results of, any of the services it
+                    provides, in terms of their correctness, accuracy, reliability or otherwise. The lifetime affiliation is not a warranty of credit repair or any
+                    other service, it is a warranty that (for your life time or company life time) you will be charge only once for the affiliation fee. Once you
+                    have paid the affiliation fee, you never have to pay again for affiliation, you will be a K & J Credit Repair Lifetime Member. If you ever
+                    have the need for K & J Credit Repair’s services in the future, your affiliation fee will be waived. Affiliate agrees to hold K & J Credit
+                    Repair, its employees, officers, board of directors and its agents harmless from any claim, suit action or demand, costs or damages,
+                    including but not limited to attorney’s fees and costs of creditors, credit bureau, or any other person arising out of the affiliation herewith
+                    presented and/or the benefits with are provided by K & J Credit Repair. I also understand and agree that K & J Credit Repair is not
+                    responsible for my credit rating, past, present or future.
+                </p>
+            </div>
+            <div class="div-block">
+                <span class="span-title">CREDIT REPORT AUTHORIZATION AND DISCLOSURES</span>
+                <p>
+                    I certify that I believe there is erroneous information in my credit files due to fraud. (Please add security/fraud alert to my files).
+                </p>
+                <p>
+                    I understand it is my responsibility to provide to K & J Credit Repair my 3 Credit Reports with score, by this reason I AUTHORIZE K & J
+                    CREDIT REPAIR TO OBTAIN MY CREDIT REPORTS FROM THE THREE MAJOR CREDIR REPORTING AGENCIES (EQUIFAX,
+                    EXPERIAN AND TRANSUNION) TO DISPUTE INACCURATE, INCOMPLETE, UNVERIFIABLE, MISLEADING OR OUTDATED
+                    CREDIT ENTRIES ON MY BEHALF.
+                </p>
+                <p>
+                    I understand the price range of the 3 credit reports is $1.00 to $50.00 depending on the provider.
+                </p>
+                <p>
+                    I hereby certify that I have been advised by K & J Credit Repair that my credit card ending (XXXX) (or other that I provide) will be
+                    charged (for the amount required to obtain my 3 credit reports) directly by the Credit Reporting Agencies or by other Company that
+                    Offers One Source Credit Reporting Service.
+                </p>
+            </div>
+            <div class="div-block">
+                <span class="span-title">I AGREE TO PROVIDE TO K & J CREDIT REPAIR A COPY OF THE FOLLOWING DOCUMENTS:</span>
+                <p class="bold">
+                    1. SOCIAL SECURITY CARD
+                </p>
+                <p class="bold">
+                    2. STATEMENT FORM OF ANY BILL (CABLE, PHONE, CELL, WATER, ELECTRICITY, ETC).
+                </p>
+                <p class="bold">
+                    3. DRIVER’S LICENSE OR STATE ID.
+                </p>
+            </div>
+            <div class="div-block">
+                <p>
+                    Affiliate authorizes K & J Credit Repair, its officers, employees and agents to access online affiliate credit accounts with Equifax,
+                    Transunion and Experian or any other Monitoring Credit Service.
+                </p>
+                <p>
+                    I understand the price range of the 3 credit reports is $1.00 to $50.00 depending on the provider.
+                </p>
+                <p>
+                    Affiliate understands the first objective of this affiliation is to improve your credit report and score, disputing accounts that were opened
+                    fraudulently in your name, correcting the accounts that appear to be late but were not late, correcting the accounts that show that you
+                    owe money but already paid them, correcting your payment history if it is incorrect, disputing accounts that are under your name but
+                    really belong to another family member, disputing accounts that are under your name but belong to another individual with your same
+                    name, eliminating the accounts that are not yours, correcting the accounts that you have already closed but still appear to be opened,
+                    correcting your personal information if there appears to be an error, disputing the duplicates, negative insecure, inaccurate, out dated or
+                    unverifiable information. It is the affiliate responsibility to notify K & J Credit Repair of any change in his/her contact information (like
+                    phone numbers, e-mails, fax, etc.) and/ or residence address to make possible that K & J Credit Repair can keep the affiliate
+                    information updated.
+                </p>
+                <p>
+                    HOW WE COUNT REMOVALS: The number of items removed represents the combined removals for all three credit bureaus. For
+                    example, if a single questionable negative item is removed from all three reports, it is counted as three separate removals. If five
+                    questionable late payments are removed from one account in one credit bureau, it is counted as five separated removals.
+                </p>
+                <p>
+                    This agreement shall go into effect when received and accepted by K & J Credit Repair at its office in Miami, Florida. You will be charge
+                    only once for the affiliation setup fee. Once you have paid the affiliation setup fee you never have to pay it again. If you ever have the
+                    need for K & J Credit Repair credit repair services in the future, your affiliation setup fee will be waived. Please, remember to keep us
+                    updated with your current address, telephone number and e-mail address so that we can contact you regarding your case. If for some
+                    reason K & J Credit Repair must return your affiliation payment, you agree to pay K & J Credit Repair the regular price for the work
+                    already done. The regular price is $20.00 per item updated, corrected or deleted in each credit report.
+                </p>
+                <p>
+                    Affiliate understands that dispute or reinvestigates the same accounts over a period of 45 days could result in denial of credit bureaus to
+                    investigate or consideration of the dispute as frivolous and irrelevant.
+                </p>
+                <p>
+                    Affiliate acknowledges that incoming and outgoing calls to K & J Credit Repair could be recorded and kept in order to ensure the quality
+                    of our services.
+                </p>
+                <p>
+                    Company right to rebuttal. if affiliate makes any negative review, complaint or comment (office or online, oral or written) against K & J
+                    Credit Repair, its employees, officers, board of directors or its agents, affiliate authorizes K & J Credit Repair to rebuttal using relevant
+                    information about the progress of the affiliate’s case (for example: start date, amount of deleted accounts) (We will never reveal to
+                    public, your personal private information like your address, social security number, driver license, etc.).
+                </p>
+                <p>
+                    By signing the affiliation contract you represent, warrant and covenant that you are a legitimate customer seeking voluntary assistance
+                    of K & J Credit Repair for correcting your credit reports and you are not a scammer stealing information, or you are not part of a
+                    watch-dog group trying to make inappropriate comments or defamatory actions against K & J Credit Repair, or you are not a competitor,
+                    or you are not related in any manner with a competitor, or you are not a person paid for a competitor or other to steal information or
+                    trying to cause any damage to K & J Credit Repair, or you are not planning to copy or distribute for personal gain a full or partial section
+                    of this contract, or any other action that may cause moral or financial harm to K & J Credit Repair. If a court finds you are not a
+                    legitimate customer, you agree to compensate K & J Credit Repair, its employees and officers in the amount of any damage caused,
+                    plus court and attorney fees.
+                </p>
+            </div>
+            <div class="div-initials">
+                <span class="spn-initials">Initials:_____________</span>
+                <span class="spn-disclaimer">“A digital copy of this agreement shall be considered an original”</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

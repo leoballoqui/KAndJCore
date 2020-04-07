@@ -1,0 +1,67 @@
+﻿@model IEnumerable<KAndJCore.Models.Account>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Accounts</h1>
+
+<p>
+    <a asp-action="Create" asp-route-id="@ViewBag.Client.Id" style="margin-right:25px">Create New</a>
+    <a asp-controller="AccountTypes" asp-action="Index" style="margin-right:25px">Account Types</a>
+    <a asp-controller="Reasons" asp-action="Index">Account Reasons</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Alias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Owner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Owner)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reason.Short)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @ViewBag.Client.FullName
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountType.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" title="Edit" class="action-icon"><i class="fa fa-edit"></i></a>
+                <a asp-action="Details" asp-route-id="@item.Id" title="Details" class="action-icon"><i class="fa fa-plus-square-o"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.Id" title="Delete" class="action-icon"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

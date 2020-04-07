@@ -1,0 +1,15 @@
+﻿
+    .div-search-container {
+        margin-bottom: 20px;
+    }
+    
+    #txt-search {
+        float: left;
+        width: 80%
+    }
+    
+    #btn-search {
+        color: white;
+        margin-left: 15px;
+        cursor: pointer;
+    }

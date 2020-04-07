@@ -1,0 +1,129 @@
+﻿@model KAndJCore.Models.Claim
+
+@{Layout = null;}
+
+
+<div class="div-page">
+    <div class="div-block">
+        <span class="span-title">@Model.Client.FullName</span>
+        <p>@Model.Client.Address</p>
+    </div>
+
+    <div class="div-block div-initial-block">
+        <div class="spn-client-info">
+            <label class="spn-client-info-title">Date of Birth: </label>
+            <span>@Model.Client.DOB.ToString("MM/dd/yyyy")</span>
+        </div>
+        <div class="spn-client-info">
+            <label class="spn-client-info-title">Social Security Number: </label>
+            <span>@Model.Client.SSN </span>
+        </div>
+    </div>
+
+    <div class="div-block div-initial-block">
+        <span class="span-title">@Model.Buro.Name</span>
+        <p>
+            <span>@Model.Buro.AddressLine1</span>
+            <br />
+            @if (!String.IsNullOrEmpty(Model.Buro.AddressLine2))
+            {
+                <span>@Model.Buro.AddressLine2</span>
+                <br />
+            }
+            <span>@Model.Buro.AddressLine3</span>
+        </p>
+    </div>
+
+    <div class="div-block" style="margin-top: 50px">
+        <div style="width: 100%; display:inline-flex">
+            <div style="width:80%">ATTN DEPARTMENT OF DISPUTES:</div>
+            <div style="width:20%" class="bold">@DateTime.Now.ToString("MM/dd/yyyy")</div>
+        </div>
+    </div>
+
+    <div class="div-block div-initial-block">
+        <p>RE: Letter to Remove Inaccurate Credit Information</p>
+    </div>
+
+    <div class="div-block">
+        <p>
+            While reviewing my credit report per your file, I noticed that there where some errors that I would like to dispute. The
+            incorrect information listed on my credit report is negatively affecting my credit score and I would like the matter fixed
+            immediately. I have enclosed a copy of my credit report highlighting the discrepancy along with the inaccurate information listed
+            below:
+        </p>
+    </div>
+
+
+
+    <div class="div-block">
+        <p>
+            @for (int i = 0; i < Model.Disputes.Count; i++)
+            {
+                <span class="indent">@(i + 1)) @Model.Disputes[i].CompleteReason</span>
+                <br />
+            }
+        </p>
+        <br />
+    </div>
+
+    <div class="div-block">
+        <p>
+            By the provisions of the Fair Credit Reporting Act, I respectfully request that these items be investigated and removed from my
+            report. It is my understanding that you will recheck these with the creditor who has posted them. I understand you must complete
+            this investigation within 30 days of receipt of this letter. Please send an updated copy of my credit report to the above address.
+            According to the act, there shall be no charge for this updated report. I also request that you please send notices of corrections
+            to anyone who received my credit report in the past six months. In addition, please add a security fraud alert to my @(Model.Buro.Name) credit
+            file.
+        </p>
+    </div>
+
+    <div class="div-block">
+        <p>
+            I will first appreciate if you can verify my contact information is accurate (in what you include in my credit report), I was born in
+            <b>@(Model.Client.DOB.ToString("MM/dd/yyyy"))</b> and my name is <b>@(Model.Client.FullName)</b>, my social security number is <b>@(Model.Client.SSN)</b>, thank you!
+        </p>
+    </div>
+
+    <div class="div-block">
+        <p>
+            In order to verify what I am saying, I have attached the following documentation:
+            <br />
+            <span class="indent">1. Copy of my ID</span>
+            <br />
+            <span class="indent">2. Proof of my Social Security Number</span>
+            <br />
+            <span class="indent">3. Copy of Bill</span>
+        </p>
+    </div>
+
+    <div class="div-block">
+        <p>
+            I beg you to devote as much time as possible to this matter, this is very important to me. Thanks for your cooperation.
+        </p>
+    </div>
+
+    <div class="div-block">
+        <p>
+            Truly yours,
+        </p>
+    </div>
+
+    <div class="div-block div-signature bold">
+        <p>
+            @Model.Client.FullName
+        </p>
+        <span>
+            ____________________________________________________________
+        </span>
+    </div>
+
+    <div class="div-cc">
+        <p>
+            CC: Federal Trade Commission (Certified Mail)
+        </p>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,123 @@
+﻿@model KAndJCore.Models.Claim
+
+@{Layout = null;}
+
+
+    <div class="div-page">
+        <div class="div-block">
+            <span class="span-title">MIAMI, @DateTime.Now.ToString("MM/dd/yyyy")</span>
+        </div>
+
+        <div class="div-block div-initial-block">
+            <span class="span-title">@Model.Client.FullName</span>
+            <p>@Model.Client.Address</p>
+        </div>
+
+        <div class="div-block div-initial-block">
+            <span class="span-title">@Model.Buro.Name</span>
+            <p>
+                <span>@Model.Buro.AddressLine1</span>
+                <br />
+                @if (!String.IsNullOrEmpty(Model.Buro.AddressLine2))
+                {
+                    <span>@Model.Buro.AddressLine2</span>
+                    <br />
+                }
+                <span>@Model.Buro.AddressLine3</span>
+            </p>
+        </div>
+
+        <div class="div-block">
+            <p>To whom it may concern.</p>
+        </div>
+
+        <div class="div-block">
+            <p>RE: Consumer Fraud Assistance </p>
+        </div>
+
+        <div class="div-block" style="margin-top: 50px">
+            <p>
+                I am requesting @(Model.Buro.Name) to conduct an investigation of the items listed below. These are inaccuracies listed in my credit report:
+            </p>
+        </div>
+
+        <div class="div-block">
+            <p>
+                @for (int i = 0; i < Model.Disputes.Count; i++)
+                {
+                    <span class="indent">@(i + 1)) @Model.Disputes[i].CompleteReason</span>
+                    <br />
+                }
+            </p>
+            <br />
+        </div>
+
+        <div class="div-block bold" style="text-decoration:underline">
+            <p>
+                See attached Copy of my @(Model.Buro.Name) Credit Report, the errors have been highlighted.
+            </p>
+        </div>
+        
+        <div class="div-block">
+            <p>
+                By the provisions of the Fair Credit Reporting Act, I demand that these items be investigated and removed from my report. It is my understanding that you will recheck these items with the creditor who has posted them. Please remove any information that the creditor cannot verify.
+            </p>
+            <p>
+                I understand that under 15 U.S.C. Sec. 1681i (a), you must complete this investigation within 30 days of receipt of this letter.
+            </p>
+            <p>
+                Please send me an updated copy of my credit report to the above address. According to the act, there shall be no charge for this updated report. I also request that you please send notices of corrections to anyone who received my credit report in the past six months.
+            </p>
+            <p>
+                In addition, please add a security fraud alert to my @(Model.Buro.Name) credit file.
+            </p>
+        </div>
+
+        <div class="div-block">
+            <p>
+                Please! Make sure that my personal data is listed in your credit reports as follows @(Model.Client.FullName), @(Model.Client.DOB.ToString("MM/dd/yyyy")) (My DOB) and @(Model.Client.SSN) (This is my social)
+            </p>
+        </div>
+
+        <div class="div-block">
+            <p>
+                I have enclosed the fallowing documents:
+                <br />
+                <span class="indent">1. Copy of my ID</span>
+                <br />
+                <span class="indent">2. Proof of my Social Security Number</span>
+                <br />
+                <span class="indent">3. Copy of Bill</span>
+            </p>
+        </div>
+
+        <div class="div-block">
+            <p>
+                Thank you for your time and help in this matter.
+            </p>
+        </div>
+
+        <div class="div-block">
+            <p>
+                Sincerely,
+            </p>
+        </div>
+
+        <div class="div-block div-signature bold">
+            <p>
+                @Model.Client.FullName
+            </p>
+            <span>
+                ____________________________________________________________
+            </span>
+        </div>
+
+        <div class="div-cc">
+            <p>
+                CC: Federal Trade Commission (Certified Mail)
+            </p>
+        </div>
+    </div>
+
+
+

@@ -1,0 +1,107 @@
+﻿@model KAndJCore.ViewModels.ClaimVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/claim-create.css" />
+    <link rel="stylesheet" href="~/css/search-box.css" />
+}
+
+<div id="div-claimCreate">
+    <h1>Create</h1>
+
+    <h4>Claim</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-5">
+            <form asp-action="Create" id="form-createClaim">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group  div-search-container">
+                    <label class="control-label" style="width:100%">Client Search</label>
+                    <input id="txt-search" class="form-control" />
+                    <a id="btn-search" title="Search" class="btn btn-primary"><i class="fa fa-search"></i></a>
+                    <span id="spn-search" class="text-danger" style="display:none">Please, include at least three characters.</span>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ClientId" class="control-label">Client</label>
+                    @if ((ViewBag.ClientId as SelectList).Count() > 0)
+                    {
+                        <select asp-for="ClientId" class="form-control sel-client" asp-items="ViewBag.ClientId"></select>
+                    }
+                    else
+                    {
+                        <br/>
+                        <span class="text-danger">No clients match the current filter.</span>
+                    }
+                </div>
+                <div class="form-group" style="width:150%">
+                    <label class="control-label">Accounts</label>
+                    <div id="div-accountsContainer">
+                        <div id="div-accountSample" style="display:none">
+                            <span class="spn-cbx">
+                                <label class="control-label lbl-account"></label>
+                                <input class="form-control cbx-account" type="checkbox" />
+                            </span>
+                        </div>
+                    </div>
+                    <div id="div-disputesContainer">
+                        <input asp-for="IncludedAccounts" type="hidden" />
+                        <div id="div-disputeSample" style="display:none">
+                            <div class="row div-disputeEntry">
+                                <div class="col-md-3">
+                                    <label class="control-label lbl-dispute"></label>
+                                </div>
+                                <div class="col-md-8">
+                                    <textarea class="form-control txt-dispute" rows="2"></textarea>
+                                </div>
+                                <div class="col-md-1">
+                                    <a class="btn btn-primary btn-sm btn-dispute" title="Include Address"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span id="lbl-error-dispute" class="text-danger" style="display:none">Please select at least one account to dispute.</span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Buroes</label>
+                    <input asp-for="IncludedBuros" type="hidden" />
+
+                    <div>
+                        @foreach (var item in ViewBag.Buroes)
+                        {
+                            <span class="spn-cbx">
+                                <label class="control-label  lbl-buro">@item.Name</label>
+                                <input class="form-control cbx-buro" type="checkbox" data-buro-id="@item.Id" />
+                            </span>
+                        }
+                    </div>
+                    <span id="lbl-error-buro" class="text-danger" style="display:none">Please select at least one buro.</span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TemplateId" class="control-label">Template</label>
+                    <select asp-for="TemplateId" class="form-control" asp-items="ViewBag.TemplateId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Notes" class="control-label"></label>
+                    <textarea asp-for="Notes" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <input id="form-submit" type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="@Url.Content("~/js/claim-create.js")"></script>
+}

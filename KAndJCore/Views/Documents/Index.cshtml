@@ -1,0 +1,50 @@
+﻿@model IEnumerable<KAndJCore.Models.Document>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Documents</h1>
+
+<p>
+    <a asp-action="Create" asp-route-id="@ViewBag.Client.Id" style="margin-right:25px">Create New</a>
+    <a asp-controller="DocumentTypes" asp-action="Index" >Document Types</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Client)
+            </th>
+            <th>
+                Document Type
+            </th>
+            <th>
+                Document
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @ViewBag.Client.FullName
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocumentType.Name)
+            </td>
+            <td>
+                <a target="_blank" href="../../documents/@item.FileFullName">
+                    <img src="../../documents/thumbnails/@item.ThumbnailFullName" />
+                </a>
+            </td>
+            <td>
+                <a asp-action="DownloadDocument" asp-route-id="@item.Id" title="Download" class="action-icon"><i class="fa fa-download"></i></a>
+                <a asp-action="Details" asp-route-id="@item.Id" title="Details" class="action-icon"><i class="fa fa-plus-square-o"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.Id" title="Delete" class="action-icon"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

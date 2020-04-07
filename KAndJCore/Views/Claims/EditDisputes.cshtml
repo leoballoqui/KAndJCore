@@ -1,0 +1,51 @@
+﻿@model KAndJCore.ViewModels.ClaimVM
+
+@{
+    ViewData["Title"] = "Edit Disputes";
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/claim-edit-disputes.css" />
+}
+
+<h1>Edit</h1>
+
+<h4>Claim Disputes</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditDisputes">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="IncludedAccounts" />
+            <div class="form-group">
+                <label class="control-label">Claim Number</label>
+                <br />
+                <label>@Model.ClaimNumber</label>
+            </div>
+            @foreach (var item in Model.DisputeAccounts)
+            {
+                <div class="form-group div-dispute" data-id="@item.Id">
+                    <label class="control-label">Reason</label>
+                    <textarea class="form-control txt-dispute" rows="2">@item.CompleteReason</textarea>
+                    <span class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash icon-delete"></i><i class="fa fa-repeat icon-undo"></i></span>
+                </div>
+            }
+            <div class="form-group">
+                <input id="form-submit" type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script src="@Url.Content("~/js/claim-edit-disputes.js")"></script>
+    }
+}

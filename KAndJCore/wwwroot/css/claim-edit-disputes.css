@@ -1,0 +1,32 @@
+﻿
+.div-dispute {
+    margin-bottom: 2rem;
+}
+
+.txt-dispute {
+    width: 200%;
+}
+
+.btn-delete {
+    margin-top: 10px;
+}
+
+.btn-delete .icon-undo {
+    display: none;
+}
+
+.btn-delete .icon-delete {
+    display: initial;
+}
+
+.deleted-dispute .btn-delete .icon-undo {
+    display: initial;
+}
+
+.deleted-dispute .btn-delete .icon-delete {
+    display: none;
+}
+
+.deleted-dispute .txt-dispute{
+     text-decoration: line-through;
+}

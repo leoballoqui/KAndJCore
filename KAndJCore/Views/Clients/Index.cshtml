@@ -1,0 +1,92 @@
+﻿@model IEnumerable<KAndJCore.Models.Client>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/search-box.css" />
+}
+
+<h1>Clients</h1>
+
+<div class="row">
+    <div class="col-md-2">
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+    </div>
+    <div class="col-md-4  div-search-container">
+        <input id="txt-search" class="form-control" />
+        <a id="btn-search" title="Search" class="btn btn-primary"><i class="fa fa-search"></i></a>
+        <span id="spn-search" class="text-danger" style="display:none">Please, include at least three characters.</span>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SSN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientSince)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CellPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @item.DOB.ToString("MM/dd/yyyy")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SSN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentStatus)
+            </td>
+            <td>
+                @item.ClientSince.ToString("MM/dd/yyyy")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CellPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-controller="Documents" asp-action="Index" asp-route-id="@item.Id" title="Documents" class="action-icon"><i class="fa fa-address-card-o"></i></a>
+                <a asp-controller="Accounts" asp-action="Index" asp-route-id="@item.Id" title="Negative Information" class="action-icon"><i class="fa fa-thumbs-o-down"></i></a>
+                <a asp-action="Notes" asp-route-id="@item.Id" title="Notes" class="action-icon"><i class="fa fa-sticky-note-o"></i></a>
+                <a asp-action="AffiliationFile" asp-route-id="@item.Id" title="Generate Affiliation File" class="action-icon"><i class="fa fa-file-pdf-o"></i></a>
+                <a asp-action="Edit" asp-route-id="@item.Id" title="Edit" class="action-icon"><i class="fa fa-edit"></i></a>
+                <a asp-action="Details" asp-route-id="@item.Id" title="Details" class="action-icon"><i class="fa fa-plus-square-o"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.Id" title="Delete" class="action-icon"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+    <script src="@Url.Content("~/js/client-index.js")"></script>
+}

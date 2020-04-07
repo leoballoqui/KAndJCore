@@ -1,0 +1,40 @@
+﻿@model KAndJCore.Models.Document
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Document</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            Document Type
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DocumentType.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Document
+        </dt>
+        <dd class="col-sm-10">
+            <a target="_blank" href="../../documents/@Model.FileFullName">
+                <img src="../../documents/thumbnails/@Model.ThumbnailFullName"/>
+            </a>
+        </dd>
+    </dl>
+    <div class="form-group">
+        <a href="@Url.Action("DownloadDocument", "Documents", new { id = Model.Id })" class="btn btn-primary">Download</a>
+    </div>
+</div>
+<div>
+    <a asp-action="Index" asp-route-id="@Model.Client.Id">Back to List</a>
+</div>

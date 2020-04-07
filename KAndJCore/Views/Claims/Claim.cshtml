@@ -1,0 +1,124 @@
+﻿@model KAndJCore.Models.Claim
+
+@{Layout = null;}
+
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+    <style type="text/css">
+        
+        .div-document{
+            font-family: Verdana;
+            font-size: 16px;
+            padding: 20px
+        }
+
+        .div-page{
+            height: 1230px;
+            position: relative;
+        }
+
+        .div-header {
+            width: 100%;
+            text-align: center;
+        }
+
+        .div-block {
+            margin-top: 25px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .div-initial-block{
+            margin-top: 40px;
+        }
+
+        .div-block .span-title{
+            font-weight:bold;
+        }
+
+        .div-block p {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .bold{
+           font-weight: bold;
+        }
+
+        .non-bold{
+           font-weight: normal;
+        }
+
+        .spn-client-info{
+            display:block;
+            margin-bottom:15px;
+        }
+
+        .spn-client-info-title{
+            font-weight:bold;
+            min-width:235px;
+            float:left;
+        }
+
+        .indent{
+            margin-left:20px;
+        }
+
+        .div-signature{
+            margin-top: 50px;
+        }
+
+        .div-signature p {
+            margin-bottom: 0;
+        }
+
+        .div-signature span {
+            line-height: 0;
+        }
+
+        .div-cc{
+            margin-top:30px;
+            width: 100%;
+            text-align: right;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="div-document">
+        @{
+            string template = "";
+            switch (Model.Template.Name)
+            {
+                case "Template 1":
+                    template = "Template1";
+                    break;
+                case "Template 2":
+                    template = "Template2";
+                    break;
+                case "Template 3":
+                    template = "Template3";
+                    break;
+                case "Template 4":
+                    template = "Template4";
+                    break;
+                case "Template 5":
+                    template = "Template5";
+                    break;
+                case "Template 6":
+                    template = "Template6";
+                    break;
+                default:
+                    template = "Template1";
+                    break;
+            }
+
+            @await Html.PartialAsync("./Templates/" + template + ".cshtml")
+        }
+    </div>
+
+</body>
+</html>
+

@@ -3,6 +3,10 @@
 @{
     ViewData["Title"] = "Edit";
 }
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/client-edit.css" />
+}
 
 <h1>Edit</h1>
 
@@ -33,9 +37,20 @@
                 <input asp-for="DOB" class="form-control" type="date" />
                 <span asp-validation-for="DOB" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group hidden" id="div-fg-ssn">
                 <label asp-for="SSN" class="control-label"></label>
-                <input asp-for="SSN" class="form-control" />
+                <span>
+                    <input asp-for="SSN" class="form-control" style="" />
+                    <i class="fa fa-close" id="btn-show-red" title="Show Redacted Number"></i>
+                </span>
+                <span asp-validation-for="SSN" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="div-fg-redssn">
+                <label asp-for="SSN" class="control-label"></label>
+                <span>
+                    <label>@Model.RedactedSSN</label>
+                    <i class="fa fa-edit" id="btn-show-ssn" title="Edit"></i>
+                </span>
                 <span asp-validation-for="SSN" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -61,6 +76,11 @@
                 <label asp-for="Address" class="control-label"></label>
                 <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressLine2" class="control-label"></label>
+                <input asp-for="AddressLine2" class="form-control" />
+                <span asp-validation-for="AddressLine2" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PreviousAddress" class="control-label"></label>
@@ -115,4 +135,5 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="@Url.Content("~/js/client-edit.js")"></script>
 }

@@ -17,7 +17,7 @@
     <hr />
     <div class="row">
         <div class="col-md-5">
-            <form asp-action="Create" id="form-createClaim">
+            <form asp-action="Create" id="form-createClaim" data-cloning="@ViewBag.Cloning" data-cloning-buro-id="@ViewBag.CloningBuroId" data-cloning-template-id="@ViewBag.CloningTemplateId" data-cloning-disputes="@ViewBag.CloningDisputes">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group  div-search-container">
                     <label class="control-label" style="width:100%">Client Search</label>

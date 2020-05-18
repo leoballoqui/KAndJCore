@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7otEbisl80GroIzkyGYoJQAAAAACAAAAAAADZgAAwAAAABAAAACbOFcs6A0XRpv2v/S8cIP2AAAAAASAAACgAAAAEAAAAK1XEF7cTd4wuqlGJ0pEIMiAAAAA1YnqGW9cTNGIa+/6AgDM6i6DCmeRZup8sERYKbvHq0RlTAP23Wtt2s06hbH4M9ZUSQ0sot+wJjJZ5gSihJi3w55ueRPWAfaaL68bdJGptwe85syeRqeo7M4BUpd32ZLUCncSTrOwgpZRwgi8UqAbtpgs0/2Kcdux9stsaJP6go0UAAAA1R54/dDpA0oomGafWYPttx21hzw=</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=tcp:kandjserver.database.windows.net,1433%3bInitial Catalog=KAndJDB%3bPersist Security Info=False%3bUser ID=kandjAdmin%3bPassword=kajAdmin123%2a%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

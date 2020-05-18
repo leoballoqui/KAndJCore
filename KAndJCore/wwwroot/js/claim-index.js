@@ -11,7 +11,6 @@ $(document).ready(function () {
     }
 
     $("#btn-search").click(function (e) {
-        alert($(this).attr("data-pending"))
         e.preventDefault();
         $("#spn-search").css("display", "none");
         var val = $("#txt-search").val();
@@ -31,6 +30,8 @@ $(document).ready(function () {
     $(".a-next-revision").click(function (e) {
         e.preventDefault();
         var id = $(this).attr("data-claim-id");
+        if ($(this).attr("enabled") === "false")
+            return;
         $.ajax({
             type: "POST",
             url: "../Claims/NextRevision/",
@@ -40,7 +41,9 @@ $(document).ready(function () {
             component.find(".spn-revision-date").html(data.newDate);
             component.find(".spn-revision").html(data.revision);
             if (data.revision >= 3) {
-                $("#a-revision-" + id).css("display", "none");
+                //$("#a-revision-" + id).css("display", "none");
+                $("#a-revision-" + id).attr("enabled", "false");
+                $("#a-revision-" + id).addClass("icon-disabled");
                 $("#a-close-claim-" + id).css("display", "inline");
                 $("#a-reopen-claim-" + id).css("display", "none");
             }
@@ -58,7 +61,8 @@ $(document).ready(function () {
             $("#spn-revision-" + id).css("display", "none");
             $("#spn-revision-closed-" + id).css("display", "inline");
             $("#spn-status-" + id).addClass("red").html("Closed");
-            $("#a-revision-" + id).css("display", "none");
+            $("#a-revision-" + id).attr("enabled", "false");
+            $("#a-revision-" + id).addClass("icon-disabled");
             $("#a-close-claim-" + id).css("display", "none");
             $("#a-reopen-claim-" + id).css("display", "inline");
 
@@ -79,8 +83,9 @@ $(document).ready(function () {
             component.css("display", "inline");
             $("#spn-revision-closed-" + id).css("display", "none");
             $("#spn-status-" + id).removeClass("red").html("Open");
-            $("#a-revision-" + id).css("display", "inline");
-            $("#a-close-claim-" + id).css("display", "none");
+            $("#a-revision-" + id).removeClass("icon-disabled");
+            $("#a-revision-" + id).attr("enabled", "true");
+            $("#a-close-claim-" + id).css("display", "inline");
             $("#a-reopen-claim-" + id).css("display", "none");
         });
     });

@@ -80,13 +80,13 @@
                 <span id="spn-status-@item.Id" class="@(item.Status == KAndJCore.Enums.ClaimStatusEnum.Closed ? "red" : "")">@Html.DisplayFor(modelItem => item.Status)</span>
             </td>
             <td>
-                <a id="a-revision-@item.Id" href="" title="Schedule Next Revision" class="action-icon a-next-revision" data-claim-id="@item.Id" @((item.Status == KAndJCore.Enums.ClaimStatusEnum.Open && item.CurrentIteration < 3) ? "style=display:inline" : "style=display:none")><i class="fa fa-calendar-plus-o"></i></a>
-                <a id="a-close-claim-@item.Id" href="" title="Close Claim" class="action-icon a-close-claim" data-claim-id="@item.Id" @((item.Status == KAndJCore.Enums.ClaimStatusEnum.Open && item.CurrentIteration >= 3) ? "style=display:inline" : "style=display:none")><i class="fa fa-archive"></i></a>
-                <a id="a-reopen-claim-@item.Id" href="" title="Reopen Claim" class="action-icon a-reopen-claim" data-claim-id="@item.Id" @((item.Status == KAndJCore.Enums.ClaimStatusEnum.Closed) ? "style=display:inline" : "style=display:none")><i class="fa fa-folder-open-o"></i></a>
+                <a id="a-revision-@item.Id" href="" title="Schedule Next Revision" data-claim-id="@item.Id" class="action-icon a-next-revision @(((item.Status == KAndJCore.Enums.ClaimStatusEnum.Closed) || item.CurrentIteration >= 3) ? "icon-disabled" : "")" @(((item.Status == KAndJCore.Enums.ClaimStatusEnum.Closed) || item.CurrentIteration >= 3) ? "enabled=false" : "")><i class="fa fa-calendar-plus-o"></i></a>
                 <a asp-action="ClaimFile" asp-route-id="@item.Id" title="Generate Printable File" class="action-icon"><i class="fa fa-file-pdf-o"></i></a>
                 <a asp-action="ClaimClone" asp-route-id="@item.Id" title="Clone Claim" class="action-icon"><i class="fa fa-clone"></i></a>
                 <a asp-action="Edit" asp-route-id="@item.Id" title="Edit" class="action-icon"><i class="fa fa-edit"></i></a>
                 <a asp-action="Details" asp-route-id="@item.Id" title="Details" class="action-icon"><i class="fa fa-plus-square-o"></i></a>
+                <a id="a-close-claim-@item.Id" href="" title="Close Claim" class="action-icon a-close-claim" data-claim-id="@item.Id" @((item.Status == KAndJCore.Enums.ClaimStatusEnum.Open) ? "style=display:inline" : "style=display:none")><i class="fa fa-archive"></i></a>
+                <a id="a-reopen-claim-@item.Id" href="" title="Reopen Claim" class="action-icon a-reopen-claim" data-claim-id="@item.Id" @((item.Status == KAndJCore.Enums.ClaimStatusEnum.Closed) ? "style=display:inline" : "style=display:none")><i class="fa fa-folder-open-o"></i></a>
                 <a asp-action="Delete" asp-route-id="@item.Id" title="Delete" class="action-icon"><i class="fa fa-trash"></i></a>
             </td>
         </tr>

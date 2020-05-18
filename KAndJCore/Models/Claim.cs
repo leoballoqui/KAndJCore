@@ -45,7 +45,7 @@ namespace KAndJCore.Models
                 string disputes = "";
                 if (Disputes != null)
                     foreach (var item in Disputes.OrderBy(d => d.AccountId).ToList())
-                        disputes += item.Account.Alias + ", ";
+                        disputes += item.Account?.Alias + ", ";
                 return !String.IsNullOrEmpty(disputes) ? disputes.Remove(disputes.Length - 2, 2) : disputes;
             }
         }

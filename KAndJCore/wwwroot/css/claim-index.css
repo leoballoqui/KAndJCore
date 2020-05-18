@@ -3,6 +3,12 @@
     color: orangered;
 }
 
+.icon-disabled{
+    opacity: .3;
+}
 
+.icon-disabled:hover {
+    color: black;
+}
 
 

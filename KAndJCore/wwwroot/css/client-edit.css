@@ -1,0 +1,20 @@
+﻿
+#div-fg-ssn i, #div-fg-redssn i {
+    font-size: 1.5em;
+    margin-left: 5px;
+    vertical-align: sub;
+}
+
+#div-fg-ssn span, #div-fg-redssn span {
+    display: block;
+}
+
+#div-fg-ssn input {
+    display: inline;
+    width: 90%
+}
+
+.hidden{
+    display: none;
+}
+

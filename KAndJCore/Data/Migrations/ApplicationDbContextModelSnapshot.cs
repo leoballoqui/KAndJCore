@@ -148,6 +148,9 @@ namespace KAndJCore.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("AddressLine2")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CellPhone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

@@ -84,7 +84,7 @@ namespace KAndJCore.Controllers
                 ViewData["ClientId"] = new SelectList(_context.Client.Take(100).OrderByDescending(c => c.Created), "Id", "Name");
             else
                 ViewData["ClientId"] = new SelectList(_context.Client.Where(c => c.LastName.ToLower().Contains(key.ToLower()) || c.Name.ToLower().Contains(key.ToLower())).OrderByDescending(c => c.Created), "Id", "Name");
-
+            ViewData["Cloning"] = false;
             return View();
         }
 
@@ -296,8 +296,9 @@ namespace KAndJCore.Controllers
                 var dbclaim = await _context.Claim.FirstOrDefaultAsync(m => m.Id == id);
                 if (dbclaim.CurrentIteration < 3)
                 {
+                    int days = dbclaim.CurrentIteration == 0 ? 30 : 7;
                     dbclaim.CurrentIteration++;
-                    dbclaim.NextRevision = dbclaim.NextRevision.AddDays(30);
+                    dbclaim.NextRevision = dbclaim.NextRevision.AddDays(days);
                     await _context.SaveChangesAsync();
                     return Json(new { newDate = dbclaim.NextRevision.ToString("MM/dd/yyyy"), revision = dbclaim.CurrentIteration });
                 }
@@ -322,14 +323,9 @@ namespace KAndJCore.Controllers
             try
             {
                 var dbclaim = await _context.Claim.FirstOrDefaultAsync(m => m.Id == id);
-                if (dbclaim.CurrentIteration >= 3)
-                {
-                    dbclaim.Status = ClaimStatusEnum.Closed;
-                    await _context.SaveChangesAsync();
-                    return Json(new { Success = "True" });
-                }
-                else
-                    return Json(new { Success = "False", responseText = "The claim still has some pending revisions" });
+                dbclaim.Status = ClaimStatusEnum.Closed;
+                await _context.SaveChangesAsync();
+                return Json(new { Success = "True" });
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -387,6 +383,8 @@ namespace KAndJCore.Controllers
                     return NotFound();
 
                 HtmlToPdf converter = new HtmlToPdf();
+                string cookieName = ".AspNetCore.Identity.Application";
+                converter.Options.HttpCookies.Add(cookieName, HttpContext.Request.Cookies[cookieName]);
                 PdfDocument doc = converter.ConvertUrl(Url.Action("Claim", "Claims", new { id = id }, Request.Scheme));
                 string path = String.Format("{0}\\documents\\{1}.pdf", this._hostingEnvironment.WebRootPath, id);
                 doc.Save(path);
@@ -406,6 +404,7 @@ namespace KAndJCore.Controllers
             }
         }
 
+        /*
         public async Task<IActionResult> ClaimClone(Guid? id)
         {
             if (id == null)
@@ -456,6 +455,37 @@ namespace KAndJCore.Controllers
                     throw;
             }
         }
+        */
+        public async Task<IActionResult> ClaimClone(Guid? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            try
+            {
+                var dbclaim = await _context.Claim.Include(c => c.Disputes).FirstOrDefaultAsync(c => c.Id == id);
+                if (dbclaim == null)
+                    return NotFound();
+
+                ViewData["Buroes"] = _context.Buro.ToList();
+                ViewData["TemplateId"] = new SelectList(_context.Template.OrderBy(t => t.Name), "Id", "Name");
+                ViewData["ClientId"] = new SelectList(_context.Client.Where(c => c.Id == dbclaim.ClientId), "Id", "Name");
+                ViewData["Cloning"] = true;
+                ViewData["CloningBuroId"] = dbclaim.BuroId;
+                ViewData["CloningTemplateId"] = dbclaim.TemplateId;
+                ViewData["CloningDisputes"] = JsonConvert.SerializeObject(dbclaim.Disputes.Select(d => d.AccountId));
+
+                return View("Create");
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ClaimExists(id.Value))
+                    return Json(new { Success = "False", responseText = "Claim Not Found" });
+                else
+                    throw;
+            }
+        }
+
 
         private bool ClaimExists(Guid id)
         {

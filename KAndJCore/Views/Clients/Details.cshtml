@@ -36,9 +36,10 @@
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.SSN)
+
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SSN)
+            @Html.DisplayFor(model => model.RedactedSSN)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CurrentStatus)
@@ -63,6 +64,12 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AddressLine2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddressLine2)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PreviousAddress)

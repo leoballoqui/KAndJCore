@@ -5,6 +5,11 @@
 
 $(document).ready(function () {
     var urlParams = new URLSearchParams(window.location.search);
+    var cloning = $("#form-createClaim").attr("data-cloning");
+    var cloningBuroId = $("#form-createClaim").attr("data-cloning-buro-id");
+    var cloningTemplateId = $("#form-createClaim").attr("data-cloning-template-id");
+    var cloningDisputes = $("#form-createClaim").attr("data-cloning-disputes");
+
     if (urlParams.has('key')) {
         $("#txt-search").val(urlParams.get('key'));
         $("#txt-search").focus();
@@ -45,7 +50,6 @@ $(document).ready(function () {
             $(".div-account").remove();
             $(".div-dispute").remove();
             $.each(data.accounts, function (index, item) {
-                console.log(item)
                 var component = $("#div-accountSample").clone();
                 component.addClass("div-account");
                 component.attr("id", "");
@@ -79,6 +83,15 @@ $(document).ready(function () {
                 }
                 
             });
+
+            if (cloning === "True") {
+                $(".cbx-buro[data-buro-id='" + cloningBuroId + "']").click();
+                $("#TemplateId").val(cloningTemplateId);
+                $.each(JSON.parse(cloningDisputes), function (index, item) {
+                    $(".cbx-account[data-account-id='" + item + "']").click();
+                    // Aqui ver si Jessica necesita importar tambien las "Completed Reason"
+                });
+            }
 
         });
     });

@@ -1,5 +1,6 @@
 ﻿using KAndJCore.Data;
 using KAndJCore.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -61,7 +62,7 @@ namespace KAndJCore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,MiddleName,LastName,DOB,SSN,CurrentStatus,Created,Completed,Address,PreviousAddress,CellPhone,HomePhone,WorkPhone,OtherPhone,Fax,Email,WorkEmail")] Client client)
+        public async Task<IActionResult> Create([Bind("Id,Name,MiddleName,LastName,DOB,SSN,CurrentStatus,Created,Completed,Address,AddressLine2,PreviousAddress,CellPhone,HomePhone,WorkPhone,OtherPhone,Fax,Email,WorkEmail")] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +95,7 @@ namespace KAndJCore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Name,MiddleName,LastName,DOB,SSN,CurrentStatus,Created,Completed,Address,PreviousAddress,CellPhone,HomePhone,WorkPhone,OtherPhone,Fax,Email,WorkEmail")] Client client)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Name,MiddleName,LastName,DOB,SSN,CurrentStatus,Created,Completed,Address,AddressLine2,PreviousAddress,CellPhone,HomePhone,WorkPhone,OtherPhone,Fax,Email,WorkEmail")] Client client)
         {
             if (id != client.Id)
             {
@@ -201,6 +202,7 @@ namespace KAndJCore.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        //[AllowAnonymous]
         public async Task<IActionResult> Affiliation(Guid? id)
         {
             if (id == null)
@@ -225,6 +227,8 @@ namespace KAndJCore.Controllers
                     return NotFound();
 
                 HtmlToPdf converter = new HtmlToPdf();
+                string cookieName = ".AspNetCore.Identity.Application";
+                converter.Options.HttpCookies.Add(cookieName, HttpContext.Request.Cookies[cookieName]);
                 PdfDocument doc = converter.ConvertUrl(Url.Action("Affiliation", "Clients", new { id = id }, Request.Scheme));
                 string path = String.Format("{0}\\documents\\{1}.pdf", this._hostingEnvironment.WebRootPath, id);
                 doc.Save(path);

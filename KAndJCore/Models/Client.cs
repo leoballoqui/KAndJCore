@@ -61,6 +61,9 @@ namespace KAndJCore.Models
         [Required]
         public string Address { get; set; }
 
+        [Display(Name = "Address Line 2")]
+        public string AddressLine2 { get; set; }
+
         [Display(Name = "Previous Address")]
         public string PreviousAddress { get; set; }
 
@@ -75,6 +78,24 @@ namespace KAndJCore.Models
                 return ($"{Name} {LastName}");
 
             } 
+        }
+
+        [NotMapped]
+        public string RedactedSSN
+        {
+            get
+            {
+                return (!String.IsNullOrEmpty(this.SSN) && this.SSN.Length >= 4) ? String.Format("XXX-XX-{0}", this.SSN.Substring(this.SSN.Length - 4, 4)) : "XXX-XX-XXXX";
+            }
+        }
+
+        [NotMapped]
+        public string FullAddress
+        {
+            get
+            {
+                return (String.IsNullOrEmpty(AddressLine2)) ? Address : $"{Address}, {AddressLine2}";
+            }
         }
 
         public Client()

@@ -1,6 +1,7 @@
 ﻿using KAndJCore.Data;
 using KAndJCore.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,7 @@ namespace KAndJCore.Controllers
             {
                 return NotFound();
             }
+            HttpContext.Session.SetString("clientId", id.ToString());
 
             var applicationDbContext = _context.Account.Where(a => a.ClientId == id).Include(a => a.AccountType).Include(a => a.Reason);
             ViewData["Client"] = client;
@@ -203,7 +205,16 @@ namespace KAndJCore.Controllers
                 .Where( a=> a.ClientId == id && a.Status == 0)
                 .ToListAsync();
 
-            return Json(new { Success = "True", accounts = accounts, address = client.Address});
+            return Json(new { Success = "True", accounts = accounts, address = client.FullAddress });
+        }
+
+        public IActionResult Back()
+        {
+            Guid clientId;
+            if (Guid.TryParse(HttpContext.Session.GetString("clientId"), out clientId))
+                return RedirectToAction(nameof(Index), new { id = clientId });
+            else
+                return RedirectToAction("Index", "Clients");
         }
 
         private bool AccountExists(Guid id)

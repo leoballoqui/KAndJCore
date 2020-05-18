@@ -39,6 +39,7 @@ namespace KAndJCore.Controllers
             {
                 return NotFound();
             }
+            HttpContext.Session.SetString("clientId", id.ToString());
 
             var applicationDbContext = _context.Document.Where(a => a.ClientId == id).Include(d => d.Client).Include(d => d.DocumentType);
             ViewData["Client"] = client;
@@ -242,6 +243,15 @@ namespace KAndJCore.Controllers
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, name);
         }
 
+        public IActionResult Back()
+        {
+            Guid clientId;
+            if (Guid.TryParse(HttpContext.Session.GetString("clientId"), out clientId))
+                return RedirectToAction(nameof(Index), new { id = clientId });
+            else
+                return RedirectToAction("Index", "Clients");
+        }
+
         private bool DocumentExists(Guid id)
         {
             return _context.Document.Any(e => e.Id == id);
@@ -249,7 +259,7 @@ namespace KAndJCore.Controllers
 
         private string GetPathAndFilename(string name, string ext)
         {
-            return this._hostingEnvironment.WebRootPath + "\\uploads\\" + name + ext;
+            return this._hostingEnvironment.WebRootPath /*Environment.CurrentDirectory*/ + "\\uploads\\" + name + ext;
         }
 
         private string ResolveExtension(string fileName)

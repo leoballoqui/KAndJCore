@@ -44,10 +44,10 @@ namespace KAndJCore.Controllers
         {
             if (String.IsNullOrEmpty(key))
             {
-                var applicationDbContext = _context.Claim.Where(c => c.NextRevision <= DateTime.Now.Date).OrderBy(c => c.NextRevision).Take(100).Include(c => c.Buro).Include(c => c.Client).Include(c => c.Template).Include(c => c.Disputes).ThenInclude(d => d.Account);
+                var applicationDbContext = _context.Claim.Where(c => c.Status == ClaimStatusEnum.Open && c.NextRevision <= DateTime.Now.Date).OrderBy(c => c.NextRevision).Take(100).Include(c => c.Buro).Include(c => c.Client).Include(c => c.Template).Include(c => c.Disputes).ThenInclude(d => d.Account);
                 return View(await applicationDbContext.ToListAsync());
             }
-            var dbContext = _context.Claim.Where(c => c.NextRevision <= DateTime.Now.Date && (c.Client.LastName.ToLower().Contains(key.ToLower()) || c.Client.Name.ToLower().Contains(key.ToLower()))).OrderByDescending(c => c.Created).Include(c => c.Buro).Include(c => c.Client).Include(c => c.Template).Include(c => c.Disputes).ThenInclude(d => d.Account);
+            var dbContext = _context.Claim.Where(c => c.Status == ClaimStatusEnum.Open && c.NextRevision <= DateTime.Now.Date && (c.Client.LastName.ToLower().Contains(key.ToLower()) || c.Client.Name.ToLower().Contains(key.ToLower()))).OrderByDescending(c => c.Created).Include(c => c.Buro).Include(c => c.Client).Include(c => c.Template).Include(c => c.Disputes).ThenInclude(d => d.Account);
             return View(await dbContext.ToListAsync());
         }
 

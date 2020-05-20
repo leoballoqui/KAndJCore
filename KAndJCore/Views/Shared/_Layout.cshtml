@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - K&J CR</title>
+    <title>K&J Credit Repair</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
@@ -20,10 +20,12 @@
             <div class="container">
                 @if (SignInManager.IsSignedIn(User))
                 {
+                    <a asp-area="" asp-controller="Claims" asp-action="Pending"> <img src="~/content/kj_logo.jpg" class="kj-logo" /></a>
                     <a class="navbar-brand" asp-area="" asp-controller="Claims" asp-action="Pending">K&J Credit Repair</a>
                 }
                 else
                 {
+                    <a asp-area="" asp-controller="Home" asp-action="Index"> <img src="~/content/kj_logo.jpg" class="kj-logo" /></a>
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">K&J Credit Repair</a>
                 }
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -61,7 +63,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - KAndJCore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; @DateTime.Now.Year - K&J Credit Repair - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
